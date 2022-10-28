@@ -1,0 +1,76 @@
+#Intro
+print("The following program has taken the novel of Dracula and performed some analysis on the words found in the text!\n")
+
+
+
+
+# This function returns the entirety of "Dracula" as a string
+def readBook():
+  f = open("dracula.txt", "r")
+  s = f.read().replace("-", " ")
+  f.close()
+  return ''.join(c for c in s if c.isalnum() or c == " ")
+
+draculaText = readBook()
+
+#How many four-letter words are there in the book
+#The word that shows up the most often in the text
+#Every word that shows up at least five hundred times
+
+
+#How many four-letter words are there in the book
+
+#Empty dict
+textDictionary = {
+}
+
+
+#split words into a list of elements
+words = draculaText.split()
+#counter
+count = 1
+#counter for four character words
+fourWordCount = 0
+
+#for loop
+for word in words:
+  #make all words lower for easy use
+  word == word.lower()
+  #if word is not in the textDictionary
+  if word not in textDictionary:
+    #add it and specify value as int1
+    textDictionary[word] = 1
+  else:
+    #Else, word is alrdy in dictionary, increase by value of 1
+    textDictionary[word] += 1
+  #Check 4 letter words
+  if len(word) == 4:
+    #iterate count
+    fourWordCount += 1
+
+print("The following words appear over 500 times!!!!")
+for key, values in textDictionary.items():
+  #if value over 500
+  if values > 500:
+    print(key)
+  #check value and iterate somehow if not largest
+  
+
+
+print("\n\n\n")
+#print(textDictionary)
+#print four word count words
+print(f"AND, There are {fourWordCount} four letter words \n\n")
+
+
+ 
+largest = 0
+winner = " "
+
+#king of the hill alg
+for key, value in textDictionary.items():
+  if value > largest:
+    largest = value
+    winner = key
+
+print(f"The most common word in Dracula is:    {winner}")
